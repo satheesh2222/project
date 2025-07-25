@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CarWorld - Drive Your Dream</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f44336, #d32f2f);
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #111;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    }
+
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      padding: 0.25rem 0;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #ff6f61;
+    }
+
+    nav ul li a.active::after,
+    nav ul li a:hover::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background: #ff6f61;
+      left: 0; bottom: -6px;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    /* Hero */
+    .hero {
+      flex: 1;
+      background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 450px;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-align: center;
+      padding: 0 1rem;
+      animation: fadeInSlide 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInSlide {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Section Title */
+    h2.section-title {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 2.4rem;
+      letter-spacing: 1.2px;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+      position: relative;
+    }
+
+    h2.section-title::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background-color: #ff6f61;
+      display: block;
+      margin: 12px auto 0 auto;
+      border-radius: 2px;
+      box-shadow: 0 0 10px #ff6f61;
+    }
+
+    /* Cars Grid */
+    .car-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+
+    /* Car Card */
+    .car-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .car-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+
+    .car-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 3px solid #ff6f61;
+      transition: transform 0.3s ease;
+    }
+
+    .car-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .car-card-content {
+      padding: 1rem 1.5rem 2rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .car-card-content h3 {
+      color: #ff6f61;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .car-card-content p {
+      flex-grow: 1;
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Button */
+    .btn {
+      background-color: #ff6f61;
+      color: #fff;
+      font-weight: 700;
+      padding: 0.65rem 1.4rem;
+      border: none;
+      border-radius: 25px;
+      text-align: center;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 6px 15px rgba(255,111,97,0.5);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background-color: #e54b45;
+      box-shadow: 0 8px 25px rgba(229,75,69,0.7);
+    }
+
+    /* Featured Section */
+    .featured-section {
+      margin-top: 4rem;
+      text-align: center;
+      color: #fff;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+    }
+
+    .featured-section img {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+
+    .featured-section img:hover {
+      transform: scale(1.02);
+    }
+
+    .featured-cta {
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #111;
+      color: #bbb;
+      text-align: center;
+      padding: 1.25rem 1rem;
+      font-size: 0.9rem;
+      margin-top: auto;
+      box-shadow: inset 0 1px 5px rgba(255,255,255,0.05);
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero {
+        font-size: 2.2rem;
+        height: 300px;
+        padding: 0 1rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">CarWorld</div>
+    <ul>
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">Models</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    Drive Your Dream Car
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Popular Car Models</h2>
+    <div class="car-list">
+      <article class="car-card" tabindex="0" aria-label="Tesla Model S">
+        <img src="https://tesla-cdn.thron.com/delivery/public/image/tesla/dfc6376a-0840-42b3-9d3e-9a4641c785a3/bvlatuR/std/2880x1800/Desktop-ModelS" alt="Tesla Model S" />
+        <div class="car-card-content">
+          <h3>Tesla Model S</h3>
+          <p>Experience electric performance with cutting-edge technology and sleek design.</p>
+          <a href="https://shop.tesla.com/" target="_blank" rel="noopener" class="btn">Order Now</a>
+        </div>
+      </article>
+
+      <article class="car-card" tabindex="0" aria-label="Toyota Prius">
+        <img src="https://toyota-cms-media.s3.amazonaws.com/wp-content/uploads/2021/11/Prius-Prime-Exterior-Hybrid-2-1
+ 

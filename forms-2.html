@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Forms Example</title>
+</head>
+<body>
+
+  <center>
+  <link rel="stylesheet" href="style.css">
+  <h1>All Forms Example</h1>
+  <form action="/submit" method="POST" enctype="multipart/form-data">
+    <label for="name">Name:</label><br />
+    <input type="text" id="name" name="name" placeholder=" Enter Your full name" required /><br /><br />
+
+    <label for="password">Password:</label><br />
+    <input type="password" id="password" name="password" required /><br /><br />
+
+    <label for="email">Email:</label><br />
+    <input type="email" id="email" name="email" placeholder="example@mail.com" required /><br /><br />
+
+    <label for="age">Age (18-100):</label><br />
+    <input type="number" id="age" name="age" min="18" max="100" /><br /><br />
+
+    <label for="phone">Phone:</label><br />
+    <input type="tel" id="phone" name="phone" placeholder="+912345678903" /><br /><br />
+
+    <label for="website">Website:</label><br />
+    <input type="url" id="website" name="website" placeholder="https://example.com" /><br /><br />
+
+    <label for="dob">Date of Birth:</label><br />
+    <input type="date" id="dob" name="dob" /><br /><br />
+
+    <label for="appt">Appointment Time:</label><br />
+    <input type="time" id="appt" name="appt" /><br /><br />
+
+      <legend>Gender:</legend>
+      <input type="radio" id="Male" name="gender" value="Male" />
+      <label for="male">Male</label><br />
+      <input type="radio" id="Female" name="gender" value="Female" />
+      <label for="female">Female</label><br />
+      <input type="radio" id="Other" name="gender" value="Other" />
+      <label for="other">Other</label><br>
+
+      <legend>Interests:</legend>
+      <input type="checkbox" id="reading" name="interests" value="reading" />
+      <label for="sports">Sports</label><br />
+      <input type="checkbox" id="sports" name="interests" value="sports" />
+      <label for="music">Music</label><br />
+      <input type="checkbox" id="movies" name="interests" value="movies" />
+      <label for="movies">Movies</label><br>
+    
+    <label for="country">Country:</label><br />
+    <select id="country" name="country" required>
+      <option value="">--Select your country--</option>
+      <option value="India">India</option>
+      <option value="USA">United States</option>
+      <option value="UK">United Kingdom</option>
+      <option value="Canada">Canada</option>
+      <option value="Australia">Australia</option>
+    </select><br /><br />
+    <label for="languages">Languages Spoken:</label><br />
+    <select id="languages" name="languages" multiple size="4">
+      <option value="english">English</option>
+      <option value="spanish">Spanish</option>
+      <option value="french">French</option>
+      <option value="german">German</option>
+      <option value="german">Tamil</option>
+    </select><br /><br />
+    
+    <label for="bio">Bio:</label><br />
+    <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Tell us about yourself"></textarea><br /><br />
+  <label for="profilepic">Upload Profile Picture:</label><br />
+    <input type="file" id="profilepic" name="profilepic" accept="image/*" /><br /><br />
+ <input type="hidden" name="userid" value="12345" />
+    <button type="submit">Submit</button><br>
+    <button type="summit">submit</button><br>
+    
+  </center>
+  </form>
+</body>
+</html>
+
